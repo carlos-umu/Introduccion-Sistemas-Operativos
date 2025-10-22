@@ -1,0 +1,99 @@
+1. A partir de la salida de la orden ps aux, que muestra información de todos los procesos exis-
+tentes en el sistema en el momento de su ejecución, selecciona todos aquellos procesos que
+pertenezcan al usuario alumno (columna USER).
+
+ps aux | grep -w ^alumno
+
+2. Modifica la solución anterior para mostrar cuántos procesos hay de alumno, pero sin mostrar
+la información de dichos procesos.
+
+//te piden cuantos
+
+ps aux | grep -wc ^alumno 
+
+3. Modifica la solución anterior para mostrar cuántos procesos hay de todos los usuarios, menos
+del usuario alumno.
+
+ps aux | tail -n +2 | grep -wcv ^alumno 
+
+4. Usando las órdenes find y grep, busca todos los ficheros regulares que hay a partir de /etc que
+contengan la palabra ((alumno)). Sólo hay que mostrar los nombres de los ficheros y la búsqueda
+dentro de cada fichero se debe realizar sin distinguir entre mayúsculas y minúsculas.
+
+find /etc/ -type f -exec grep -wli alumno{} \;
+
+
+
+5. Muestra la lı́nea del fichero /etc/passwd que pertenece al usuario alumno.
+grep -w ^alumno /etc/passwd 
+
+6. Obtén todas las palabras (deben contener solo letras, sin distinguir entre mayúsculas y minúscu-
+las) que aparezcan en la salida de la orden ps aux. Muestra cada palabra en una lı́nea distinta.
+Usa la orden tail -n +2 en la posición adecuada de la tuberı́a para eliminar la cabecera de
+la orden ps aux (es decir, la primera lı́nea).
+
+ps aux | tail -n +2 | grep woi "[a-z]\+"
+
+
+
+
+
+
+Sin dejar huecos en blanco, completa la siguiente tubería para obtener del fichero /etc/passwd una lista ordenada de todos los usuarios que tienen como ínterprete de órdenes el ejecutable /sbin/nologin. Nota: en el fichero /etc/passwd, el separador de campos es el carácter «:», el nombre del usuario aparece al principio (primer campo) y el intérprete de órdenes usado por el usuario aparece al final (último campo):
+
+
+grep  /sbin/nologin$  /etc/paswwd |cut -f1 | sort
+
+
+Sin dejar huecos en blanco, completa la siguiente tubería para obtener una lista de los ficheros regulares que hay en /usr/lib64 ordenada por tamaño. En la salida producida, en cada línea debe aparecer el nombre del fichero completo (es decir, la ruta absoluta o relativa del mismo), un espacio y su tamaño en bytes
+
+
+//ORDENAR POR TAMAÑO NO ES CON EL SIZE
+
+find /usr/lib64 -type f -printf "%p %s\n"| sort -n -k2
+
+Sin dejar huecos en blanco, completa la siguiente tubería para que, a partir de la salida de la orden ps aux, obtenga los nombres de los usuarios que tienen un único proceso en ejecución:
+//unico proceso en ejecucion es uniq -c
+
+ps aux | tail -n +2 |cut -f1 -d " " | sort |uniq -c
+
+Sin dejar huecos en blanco, completa la siguiente tubería para obtener una lista de ficheros regulares repetidos a partir de /usr/lib64 (evidentemente, un fichero regular estará repetido cuando aparezca un fichero regular con su nombre en más de un directorio). La lista producida debe mostrar el nombre del fichero (solo el nombre, sin la ruta) precedido por el número de veces que se repite:
+
+find /usr/lib64 -type f -printf "%f\n " |sort | uniq -dc
+
+Sin dejar huecos en blanco, completa la siguiente tubería para que, a partir de la salida de la orden ps aux, obtenga los 5 procesos del usuario «alumno» que menor tamaño de memoria virtual tienen (columna VSZ):
+//quedarte con los 5 es head -n 5
+//los ordenas por orden decreciente numericamente y ya head
+
+ps aux | tail -n +2 | -grep -w ^alumno | sort -k5,5n
+
+
+Rellena TODOS los huecos de forma que al ejecutar la siguiente orden se muestre en pantalla las líneas del fichero «clientes.txt» ordenadas numéricamente por orden decreciente de la sexta columna. En caso de empate entre varias líneas, éstas se ordenarán alfabéticamente por la segunda columna.
+
+
+sort -k6,6nr -k2,2 clientes.txt
+
+Rellena TODOS los huecos de forma que al ejecutar la siguiente orden se AÑADA al final del fichero «listadoficheros.txt» el nombre (solamente el nombre, sin incluir su ruta) de todos los ficheros regulares del directorio «/etc» (y recursivamente de todos sus subdirectorios).
+
+find /etc -type f -printf "%f\n">>listadoficheros.txt
+
+
+Rellena TODOS los huecos de forma que al ejecutar las siguientes órdenes con tuberías se muestre en pantalla el contenido del fichero «frutas.txt» pero ocultando los valores numéricos de manera que, en lugar de cada número, se visualicen tantos "+" como cifras tenga dicho número. Es decir si, por ejemplo, el contenido del fichero «frutas.txt» es «Tengo 547 naranjas repartidas en 30 cajas», se mostraría en pantalla «Tengo +++ naranjas repartidas en ++ cajas»
+
+cat frutas.txt | tr "0-9" "+"
+
+Rellena TODOS los huecos de forma que al ejecutar la siguiente orden se obtenga en pantalla
+un listado de los subdirectorios del directorio «/home/alumno»
+que tengan todos los permisos para su usuario propietario.
+
+ls -l /home/alumno | grep  ^drwx             //que empieze por drwx
+
+Rellena TODOS los huecos de forma que al ejecutar las siguientes órdenes con tuberías se muestre en pantalla el contenido del fichero «frutas.txt» cambiando por el caracter «+» cualquier carácter que no sea una letra vocal minúscula.
+
+
+cat frutas.txt | tr -c "aeiou" "+" 
+
+
+
+
+

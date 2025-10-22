@@ -1,0 +1,8 @@
+ atrm gsdj500 neato
+ sddmthemeinstaller
+ attr gsec needs-restarting sdiff
+ ubio gsettings
+ neotoppm sdl-config
+ ubiocut gsettings-data-convert neqn sdpscanner
+ ubiomfcc gsettings-schema-convert net
+ sdptool

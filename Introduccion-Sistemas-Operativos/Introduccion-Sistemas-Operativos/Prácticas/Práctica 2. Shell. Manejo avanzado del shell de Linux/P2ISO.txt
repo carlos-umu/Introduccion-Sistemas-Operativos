@@ -1,0 +1,44 @@
+1.buscar patron de usuario SOLO PRIMERA COLUMNA
+		-w solo alumno exacto y ademas que la linea comienze por alumno ^
+
+	//ps aux | grep -w  ^alumno
+
+
+2.Contar las lineas que hay
+
+	//ps aux | grep -w  ^alumno | wc -l
+
+		el grep con c te dice cuantas lineas con el patron
+
+	//ps aux | grep -wc ^alumno
+
+3.De cualquier usuario que no se alumno
+		el grep con v se quede con las lineas que no contienen el patron
+		
+		ps aux | grep -wv  ^alumno | wc -l    //una menos no es del todo correcta 
+	
+		ELIMINAR CABECERA SE QUEDA CON TODO MENOS USER
+	
+	//ps aux | grep -wv ^USER | grep -wv  ^alumno | wc -l
+	
+		ELIMINAR CON TAIL te quedas con todas empezando por la segunda
+		tail -n 2 esto es quedate con las dos ultimas
+		
+	//ps aux | tail -n +2 | grep -wv  ^alumno | wc -l
+	
+4. a partir de /etc  es decir todo recursivamente FICHEROS REGULARES que contengan alumno pero NO EN EL NOMBRE SINO DENTRO DEL FICHERO
+		si dentro de ese fichero se encuentra que salga por pantalla
+											con -l grep te dice en que fichero ha encontrado el patron
+	//find /etc/ -type f		(recursivamente->buscar palabra alumno) ->//find /etc/ -type f -exec grep -wli alumno {} \;
+	
+NOTA: TE SALEN MENSAJES DE ERROR MANDALOS A LA PAPELERA
+
+	//find /etc/ -type f -exec grep -wli alumno {} \; 2> /dev/null               (/dev/null es la papelera)
+	
+5.
+	grep -w ^alumno /etc/passwd
+	
+6.
+					cualquier caracter de la a a la z una o mas veces
+					cada vez que en una linea muestre el patron y se olvida del resto de la linea, QUEDATE SOLO CON LO QUE ESTA EN ROJO
+	ps aux | tail -n +2 | grep -woi "[a-z]\+"

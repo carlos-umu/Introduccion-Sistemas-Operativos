@@ -1,0 +1,6 @@
+CorrelationId: bff13674-89c7-4568-ac06-f46ee7e0cde9
+UTC DateTime: 10/22/2025 15:25:40
+
+The following files/folders have not been downloaded
+0. Introduccion-Sistemas-Operativos/GuionesShellP3/examen19/ficheroexiste
+1. Introduccion-Sistemas-Operativos/Pr?cticas/Pr?ctica 2. Shell. Manejo avanzado del shell de Linux/P2ISO(copia).txt

@@ -1,0 +1,10 @@
+El sol se elevaba cada vez mas. Inmovil y petreo, el mar del
+#insertar 3 ./datos.txt
+acercaba la hora en que todo se convertia en un infierno: la
+tierra, el cielo, nosotros mismos. Los yoruba creen que si la
+sombra abandona al hombre, este morira. Y aqui todas las sombras
+#quitar
+sombra abandona al hombre, este morira. Y aqui todas las sombras
+#insertar 1 ./datos.txt
+#quitar
+Ebano. Ryszard Kapuscinski
